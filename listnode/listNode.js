@@ -18,8 +18,8 @@
  * }
  * val即value；
  */
-function Node(element){
-    this.element = element;
+function Node(val){
+    this.val = val;
     this.next = null;
 }
 
@@ -35,7 +35,7 @@ function LinkedList(){
 }
 function NodeFind(item){
     var currNode = this.head;
-    while(currNode.element !== item){
+    while(currNode.val !== item){
         currNode = currNode.next;
     }
     return currNode;
@@ -49,7 +49,7 @@ function NodeInsert(newElement,item){
 function NodeDisplay(){
     var currNode = this.head;
     while(!(currNode.next === null)){
-        console.log(currNode.next.element);
+        console.log(currNode.next.val);
         currNode = currNode.next;
     }
 }
@@ -60,7 +60,7 @@ function NodeRemove(item){
     直接指向item的下一个
     */
     var prevNode = this.head;
-    while(prevNode.next.element !== item){
+    while(prevNode.next.val !== item){
         prevNode = prevNode.next;
     }
     // 删除
@@ -73,7 +73,7 @@ function NodeRemove(item){
 }
 
 // main() for test
-/*
+
 var cities = new LinkedList();
 cities.insert("a","head");
 cities.insert("b","a");
@@ -82,7 +82,7 @@ cities.insert("d","c");
 cities.remove('d');
 
 cities.display();
-*/
+
 
 
 // 双向链表 - 增加 this.previous 连接前一个节点
