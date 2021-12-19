@@ -67,6 +67,7 @@ function LinkedList(){
 function NodeFind(item){ // 查找值为item的Node
     var currNode = this.head;
     while(currNode.val !== item){
+        if(currNode.next == null) return 0; // 后续进行约瑟夫环的计算时要用
         currNode = currNode.next;
     }
     return currNode;
@@ -135,19 +136,113 @@ function Node2(val){
 最后一个结点的指针域指向头结点，整个链表形成一个环。  
 只需要在构造函数中加入 `this.head.next = this.head` 即可
 
-### 拓展学习
+## 约瑟夫环 问题
 
-链表经典问题之约瑟夫问题
+> 传说在公元 1 世纪的犹太战争中，犹太历史学家弗拉维奥·约瑟夫斯和他的 40 个同胞被罗马士兵包围。犹太士兵决定宁可自杀也不做俘虏，于是商量出了一个自杀方案。他们围成一个圈，从一个人开始，数到第三个人时将第三个人杀死，然后再数，直到杀光所有人。约瑟夫和另外一个人决定不参加这个疯狂的游戏，他们快速地计算出了两个位置，站在那里得以幸存。请问哪两个位置？写一段程序将 n 个人围成一个圈，并且第 m 个人会被杀掉，计算一圈人中哪两个人会存活。
 
-- [百度百科](https://baike.baidu.com/item/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98)
-- [循环链表(约瑟夫环)的建立及C语言实现](http://c.biancheng.net/view/3346.html)
+### 数组方法
 
+```javascript
+/**
+ * @param len 人数
+ * @param start  开始位置
+ * @param interval 间隔
+ * @return {string} 幸存者位置信息
+ */
+function JosephCircle(len=50,start=1,interval=3){
+    if(len<start){
+        return "error,length must bigger than start!";
+    }
+    let people = Array(len).fill(1); // 用1表示活着
+    let position = start-1, // 数到的位置
+        count = 0,n = len;
+    while(n>1){
+        count += people[position];
+        if(count === interval){
+            count = 0;
+            people[position] = 0;
+            n --;
+        }
+        if(position === len-1){
+            position = 0;
+        }else{
+            ++position;
+        }
+    }
+    return "幸存者位置为："+(people.indexOf(1)+1);
+}
+```
+测试：
+```javascript
+console.log(JosephCircle(50,3));
+```
+
+### 链表方法
+
+```javascript
+/**
+ * @param len 人数
+ * @param start  开始位置
+ * @param interval 间隔
+ * @return {string} 幸存者位置信息
+ */
+function JosephRing2(len=40,start=1,interval=3){
+    if(len<1 || start <1 || interval<2 || start>len){
+        return "数据有误！";
+    }
+    let people = new LinkedList();
+    people.insert(1,"head")
+    for(let i = 2;i<=len;i++){
+        people.insert(i,i-1);
+    }
+    let n = len,count = 0,i=start;
+    while(n>1){
+        count += people.find(i)? 1:0;
+        if(count === interval){
+            count = 0;
+            people.remove(i);
+            n -- ;
+        }
+        if(i === len){
+            i = people.head.next.val;
+        }else{
+            i++;
+        }
+    }
+    return "幸存者位置为："+people.head.next.val;
+}
+```
+
+测试：
+```javascript
+console.log(JosephRing2(40,1,3));
+```
+
+### 两种方法时间效率比较
+
+```javascript
+// 数组
+let now1 = new Date();
+console.log(JosephRing(40,1,3));
+let now2 = new Date();
+console.log(now2-now1 + "ms");
+// 链表
+let now3 = new Date();
+console.log(JosephRing2(40,1,3));
+let now4 = new Date();
+console.log(now4-now3 + "ms");
+```
+
+![image.png](https://s2.loli.net/2021/12/19/KA4x3BUQ9IvGpSb.png)
+
+由此可见，链表的效率很高。
 
 ## 参考文章
 
 - [百度百科](https://baike.baidu.com/item/%E9%93%BE%E8%A1%A8/9794473?fr=aladdin)
 - 《数据结构与算法JavaScript描述》
 - [为什么js中不封装链表结构？](https://www.zhihu.com/question/62128817)
+- [算法 js 解决约瑟夫问题](https://www.jianshu.com/p/a4bb5180dd67)
 
 有关链表练习题目可以去[leetcode](https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/x2t7vj/)学习：
 

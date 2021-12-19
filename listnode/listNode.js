@@ -33,14 +33,15 @@ function LinkedList(){
     this.remove = NodeRemove;
     this.display = NodeDisplay;
 }
-function NodeFind(item){
+function NodeFind(item){ // 查找值为item的Node
     var currNode = this.head;
     while(currNode.val !== item){
+        if(currNode.next == null) return 0;
         currNode = currNode.next;
     }
     return currNode;
 }
-function NodeInsert(newElement,item){
+function NodeInsert(newElement,item){ // 插入数值
     var newNode = new Node(newElement),
         current = this.find(item);
     newNode.next = current.next;
@@ -54,36 +55,26 @@ function NodeDisplay(){
     }
 }
 function NodeRemove(item){
-    /* 第一种方法：
-    从head开始，找到待删除的item的前一个node，
-    把前一个node的next指向跳过item，
-    直接指向item的下一个
-    */
+    // 从head开始，找到前一个node
     var prevNode = this.head;
     while(prevNode.next.val !== item){
         prevNode = prevNode.next;
     }
     // 删除
     prevNode.next = prevNode.next.next;
-    /*
-    * 第二种方法：
-    * 在不是最后一个节点的情况下，直接把item的值换成下一个node的值，然后把next指向也换成下一个node的指向
-    * 如果是最后一个节点，则直接把前一个节点的node改成null即可（还是要获取item的前一个node）
-    * */
 }
 
 // main() for test
-
+/*
 var cities = new LinkedList();
 cities.insert("a","head");
 cities.insert("b","a");
 cities.insert("c","b");
 cities.insert("d","c");
-cities.remove('d');
 
+console.log(cities.find('f'))
 cities.display();
-
-
+*/
 
 // 双向链表 - 增加 this.previous 连接前一个节点
 function Node2(val){
@@ -171,5 +162,82 @@ cities.reverseDisp();
  * 双循环链表
  */
 
+//js链表解决 约瑟夫环
+/**
+ * 1、数组方法
+ * 将 n个人围成一个圈，并且第 m 个人会被杀掉，计算一圈人中哪两个人会存活。
+ *
+ * @param len 人数
+ * @param start  开始位置
+ * @param interval 间隔
+ * @return {string} 幸存者位置信息
+ */
+function JosephRing(len=40,start=1,interval=3){
+    if(len<start){
+        return "error,length must bigger than start!";
+    }
+    let people = Array(len).fill(1); // 用1表示活着
+    let position = start-1, // 数到的位置
+        count = 0,n = len;
+    while(n>1){
+        count += people[position];
+        if(count === interval){
+            count = 0;
+            people[position] = 0;
+            n --;
+        }
+        if(position === len-1){
+            position = 0;
+        }else{
+            ++position;
+        }
+    }
+    if(people.indexOf(1) === -1){
+        return '无幸存者';
+    }else{
+        return "幸存者位置为："+(people.indexOf(1)+1);
+    }
+}
+// let now1 = new Date();
+console.log(JosephRing(40,1,3));
+// let now2 = new Date();
+// console.log(now2-now1 + "ms");
 
+/**
+ * 2、链表方法 - 循环链表
+ *
+ * @param len 人数
+ * @param start  开始位置
+ * @param interval 间隔
+ * @return {string} 幸存者位置信息
+ */
 
+function JosephRing2(len=40,start=1,interval=3){
+    if(len<1 || start <1 || interval<2 || start>len){
+        return "数据有误！";
+    }
+    let people = new LinkedList();
+    people.insert(1,"head")
+    for(let i = 2;i<=len;i++){
+        people.insert(i,i-1);
+    }
+    let n = len,count = 0,i=start;
+    while(n>1){
+        count += people.find(i)? 1:0;
+        if(count === interval){
+            count = 0;
+            people.remove(i);
+            n -- ;
+        }
+        if(i === len){
+            i = people.head.next.val;
+        }else{
+            i++;
+        }
+    }
+    return "幸存者位置为："+people.head.next.val;
+}
+// let now3 = new Date();
+console.log(JosephRing2(40,1,3));
+// let now4 = new Date();
+// console.log(now4-now3 + "ms");
