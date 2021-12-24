@@ -1,0 +1,27 @@
+{
+  "name": "algorithm",
+  "version": "1.1.1",
+  "description": "- [x] 链表 `/listnode`",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/can-dy-jack/algorithm.git"
+  },
+  "author": "kart jim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/can-dy-jack/algorithm/issues"
+  },
+  "homepage": "https://github.com/can-dy-jack/algorithm#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.7"
+  }
+}

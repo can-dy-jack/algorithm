@@ -244,5 +244,5 @@ console.log(now4-now3 + "ms");
 - [为什么js中不封装链表结构？](https://www.zhihu.com/question/62128817)
 - [算法 js 解决约瑟夫问题](https://www.jianshu.com/p/a4bb5180dd67)
 
-有关链表练习题目可以去[leetcode](https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/x2t7vj/)学习：
+有关链表练习题目可以去[leetcode](https://leetcode-cn.com/leetbook/read/linked-list/x6ybqh/)学习：
 

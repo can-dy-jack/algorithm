@@ -199,7 +199,7 @@ function JosephRing(len=40,start=1,interval=3){
     }
 }
 // let now1 = new Date();
-console.log(JosephRing(40,1,3));
+// console.log(JosephRing(40,1,3));
 // let now2 = new Date();
 // console.log(now2-now1 + "ms");
 
@@ -238,6 +238,8 @@ function JosephRing2(len=40,start=1,interval=3){
     return "幸存者位置为："+people.head.next.val;
 }
 // let now3 = new Date();
-console.log(JosephRing2(40,1,3));
+// console.log(JosephRing2(40,1,3));
 // let now4 = new Date();
 // console.log(now4-now3 + "ms");
+
+// more: https://leetcode-cn.com/leetbook/read/linked-list/x6ybqh/
