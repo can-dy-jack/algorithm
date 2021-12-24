@@ -120,10 +120,11 @@ function uniqueChar(s) {
 ## 双指针法
 双指针法是指利用两个`指针`分别指向数组的特定位置（开头或尾部等），然后按照不同条件让两个`指针`移动，达到交换数组元素的目的。
 `指针`可以是数组的索引等。
+双指针法经常在排序数组中使用。
 
 有题：
-> 给你一个有序数组 `nums` ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。
-> 不要使用额外的数组空间，你必须在 `原地` 修改输入数组 并在使用 `O(1)` 额外空间的条件下完成。
+> 给你一个有序数组 `nums` ，原地删除重复出现的元素，使每个元素只出现一次，返回删除后数组的新长度。
+> 不要使用额外的数组空间， `原地` 修改输入数组，并在使用 `O(1)` 额外空间的条件下完成。
 
 _不需要考虑数组中超出新长度后面的元素。_
 
@@ -143,7 +144,7 @@ function removeDuplicates (nums) {
 };
 ```
 
-### 二分法
+## 二分法
 二分法查找，是一种在有序数组中查找特定元素的搜索算法。
 
 二分法查找的思路如下：
@@ -170,18 +171,99 @@ function search(nums, target) {
 };
 ```
 
-### 滑动窗口
+## 滑动窗口
+
+滑动窗口就是利用队列的思想,将队列的元素与目标元素进行比较。
+如果队列没有目标元素,就将目标元素填充到队列中。
+如果有目标元素那就不继续滑动窗口，将队列元素返回。
+
+用以解决数组/字符串的子元素问题，它可以将嵌套的循环问题，转换为单循环问题，降低时间复杂度。
+
+看题：
+> 找出该数组中满足其和 大于等于目标数字 的`长度最小`的 `连续子数组`，并返回其长度。
+
+```javascript
+function minSub(target, nums) {
+    let left = 0,right = 0,re = 0,len = 0;
+    while(right < nums.length){
+        re += nums[right];
+        while(re>=target){
+            len = len?Math.min(len,right-left+1):right-left+1;
+            re -= nums[left];
+            left ++;
+        }
+        right ++;
+    }
+    return len;
+};
+```
+
+可以参考文章：[滑动窗口算法](https://www.zhihu.com/question/314669016)
+
+## 贪心算法
+
+> 贪心算法是对完成一件事情的方法的描述，贪心算法每一次都做出当前看起来最好的选择，而不用考虑其它可能的选择。
+
+只看概念其实并不好理解，还是通过例子了解贪心算法（题目来自 [力扣](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii) ）：
+> 给定一个数组 prices ，其中 prices[i] 是一支给定股票第 i 天的价格。计算你所能获取的最大利润。
+
+示例:  
+输入: prices = [7,1,5,3,6,4]
+输出: 7
+解释: 在第 2 天（股票价格 = 1）的时候买入，在第 3 天（股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5-1 = 4 。
+随后，在第 4 天（股票价格 = 3）的时候买入，在第 5 天（股票价格 = 6）的时候卖出, 这笔交易所能获得利润 = 6-3 = 3 。
+
+示例 2:  
+输入: prices = [1,2,3,4,5]  
+输出: 4  
+解释: 在第 1 天（股票价格 = 1）的时候买入，在第 5 天 （股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5-1 = 4 。
+
+分析：由于股票的购买没有限制，因此整个问题等价于价格上升的所有区间的和。
+```javascript
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
+    let ans = 0;
+    let n = prices.length;
+    for (let i = 1; i < n; ++i) {
+      ans += Math.max(0, prices[i] - prices[i - 1]);
+    }
+    return ans;
+};
+```
+
+_贪心算法只能用于计算最大利润，计算的过程并不是实际的交易过程。_ 如第二个示例，按算法里是进行 4 次买入和 4 次卖出，但是实际的交易过程并不是，实际情况是第一天买入，第五天卖出。
+
+- 时间复杂度：O(n)
+- 空间复杂度：O(1)
+
+贪心算法让解决过程`更简单`，不需要考虑太多，直逼结果的感觉。
+
+--- 
+## More
+
+和贪心算法相关的其它知识：
+- 回溯算法
+- 动态规划
+
+字符串匹配算法：
+- 暴力匹配
+- Knuth-Morris-Pratt 算法，即KMP算法
+  - [可参考 阮一峰的博客](http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html)
+  - [LeetCode - KMP](https://leetcode-cn.com/leetbook/read/array-and-string/cpoo6/)
+- Boyer-Moore 算法
+- Sunday 算法等
 
 
-
-
-
-以上，是本人的学习算法与数据结构的总结笔记，如有不足，请指正。
+以上，是本人的学习算法与数据结构的阶段总结笔记，如有不足，请指正。
 
 ## 参考文章
 
 - [百度百科 - 集合](https://baike.baidu.com/item/%E9%9B%86%E5%90%88/2908117?fr=aladdin)
 - [MDN - Set](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set)
 - [MDN - Array](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array)
-- [leetcode](https://leetcode-cn.com/leetbook/read/array-and-string)
+- [例题来自leetcode](https://leetcode-cn.com/leetbook/)
+- [JavaScript滑动窗口思想](https://zhuanlan.zhihu.com/p/338744177)
 
