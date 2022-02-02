@@ -243,3 +243,19 @@ function JosephRing2(len=40,start=1,interval=3){
 // console.log(now4-now3 + "ms");
 
 // more: https://leetcode-cn.com/leetbook/read/linked-list/x6ybqh/
+
+
+/**
+ * 链表经典题目之 反转链表
+ */
+var reverseList = function(head) {
+    let re = null;
+    while(head != null){
+        let temp = head; // temp 保存 head 的前一个元素
+        head = temp.next; // head向后走
+        temp.next = re; // 将前面的节点（上个循环的结构）加到后面
+        re = temp; // 保存这个循环的结果
+    }
+    return re;
+};
+
