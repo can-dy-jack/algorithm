@@ -15,4 +15,28 @@ class Stack{
         return this.data.length;
     };
 }
-
+class Queue{
+    constructor(start = 0) {
+        this.data = [];
+        this.head = start;
+    }
+    add(item){
+        this.data.push(item);
+        return true;
+    }
+    delete(){
+        if(!this.data.length){
+            console.warn('Queue is empty.')
+            return false;
+        }else{
+            this.head ++;
+            return true;
+        }
+    }
+    front(){
+        return this.data[this.head];
+    }
+    isEmpty(){
+        return this.head >= this.data.length;
+    }
+}
