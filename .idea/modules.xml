@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/algorithm.iml" filepath="$PROJECT_DIR$/.idea/algorithm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../vue/codebook/.idea/codebook.iml" filepath="$PROJECT_DIR$/../../vue/codebook/.idea/codebook.iml" />
     </modules>
   </component>
 </project>

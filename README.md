@@ -1,4 +1,4 @@
-# JavaScript algorithm
+# JavaScript算法与数据结构库
 
 ## 数据结构
 
