@@ -122,7 +122,6 @@ ListNode.prototype.insert = function (index, val){
     newNode.next = cur.next;
     cur.next = newNode;
     this.size ++;
-    return this.head;
 }
 ListNode.prototype.toString = function (){
     let nodeNums = [],cur = this.head.next;
@@ -132,3 +131,4 @@ ListNode.prototype.toString = function (){
     }
     return [nodeNums.join('->'),"node's value"];
 }
+// console.log(ListNode.prototype);

@@ -1,87 +1,125 @@
-function Node2(val){
+function Node2(val = 0,next = null,prev = null){
     this.val = val;
-    this.next = null;
-    this.previous = null;
+    this.next = next;
+    this.prev = prev;
 }
 function ListNode2(){
-    this.head = new Node2("head");
+    this.head = new Node2();
     this.size = 0;
-    this.find = NodeFind2;
-    this.reverseDisp = reverseDisp;
-    this.insert = NodeInsert2;
-    this.remove = NodeRemove2;
-    this.display = NodeDisplay2;
 }
-function NodeFind2(item){
-    var currNode = this.head;
+/**
+ * 在链表最后添加一个节点
+ * @param {number|string} item
+ * @return {Node} this.head
+ */
+ListNode2.prototype.push = function (item){
+    let cur = this.head;
+    while(cur.next !== null){
+        cur = cur.next;
+    }
+    cur.next = new Node2(item,null,cur);
+    this.size++;
+}
+/**
+ * 找到位于index的节点的值
+ * @param {number} index
+ * @return {number}
+ */
+ListNode2.prototype.get = function (index){
+    if(index<0 || index>=this.size){ return -1; }
+    let cur = this.head.next;
+    for(let i =0;i<index;i++){
+        cur = cur.next;
+        if(cur === null) return -1;
+    }
+    return cur.val;
+}
+/**
+ * 删除值为 item(第一个值为item)  的节点
+ * @param {number|string} item
+ * @return {boolean} true if success
+ */
+ListNode2.prototype.remove = function (item){
+    let prevNode = this.head.next;
+    if(this.head.next === null) return false;
+    while(prevNode.val !== item){
+        prevNode = prevNode.next;
+        if(prevNode === null) return false;
+    }
+    prevNode.prev.next = prevNode.next;
+    prevNode.next.prev = prevNode.prev;
+    this.size--;
+    return true;
+}
+/**
+ * 删除指定下标的节点
+ * @param {number} index
+ * @return {number} 被删除的那个节点的值
+ */
+ListNode2.prototype.removeAtIndex = function (index){
+    // if(index >= this.size) return;
+    let node = this.head.next;
+    for (let i = 0;i<index;i++){
+        node = node.next;
+    }
+    if(node.next === null){
+        node.prev.next = null;
+        this.size--;
+        return node.val;
+    } else {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+        this.size--;
+        return node.val;
+    }
+}
+/**
+ * 打印链表内的所有节点的值
+ * @return {Array}
+ */
+ListNode2.prototype.print = function (){
+    let nodeNums = [],cur = this.head.next;
+    while(cur !== null){
+        nodeNums.push(cur.val);
+        cur = cur.next;
+    }
+    return nodeNums;
+}
+/**
+ * 寻找链表中和某个值 (item) 相同的的第一个节点，如果找不到就返回null
+ * @param {number|string} item
+ * @return {Node}
+ */
+ListNode2.prototype.find = function (item){
+    let currNode = this.head.next;
     while(currNode.val !== item){
+        if(currNode.next == null) return null;
         currNode = currNode.next;
     }
     return currNode;
 }
-function NodeInsert2(newElement,item){
-    var newNode = new Node2(newElement),
-        current = this.find(item);
-    newNode.next = current.next;
-    newNode.previous = current;
-    current.next = newNode;
-}
-function NodeDisplay2(){
-    var currNode = this.head;
-    while(!(currNode.next === null)){
-        console.log(currNode.next.val);
-        currNode = currNode.next;
-    }
-}
-function NodeRemove2(item){
-    let currNode = this.find(item);
-    if(currNode.next !== null){
-        // 语句顺序很重要
-        currNode.previous.next = currNode.next;
-        currNode.next.previous = currNode.previous;
-        currNode.next = null;
-        currNode.previous = null;
-    }else{
-        currNode.previous.next = null;
-        currNode.next = null;
-        currNode.previous = null;
-    }
-}
-// 反序显示
-function reverseDisp(){
-    // 查找最后的节点
-    let node = this.head;
-    while(node.next !== null){
-        node = node.next;
-    }
-
-    while(node.previous !== null){
-        console.log(node.val);
-        node = node.previous;
-    }
-}
-// main() for test
-/*
-var cities = new LinkedList2();
-cities.insert("a","head");
-cities.insert("b","a");
-cities.insert("c","b");
-cities.insert("d","c");
-
-cities.remove('d');
-
-cities.display();
-cities.reverseDisp();
-*/
-
-
-
 /**
- * 循环链表 - 最后一个结点的指针域指向头结点，整个链表形成一个环。
- *
- * 只需要在构造函数中加入 this.head.next = this.head 即可
- * 因为在使用 this.insert 插入值的时候有`newNode.next = current.next`,能够保证最后一个节点的next指向head！
- *
- * 单循环链表
- * 双循环链表
+ * 在指定位置插入值为val的节点
+ * @param {number} index
+ * @param {number} val
  */
+ListNode2.prototype.insert = function (index, val){
+    // if(index>= this.size) return false;
+    const newNode = new Node2(val);
+    let cur = this.head;
+    for(let i = 0;i<index;i++){
+        cur = cur.next;
+    }
+    newNode.next = cur.next;
+    cur.next = newNode;
+    this.size ++;
+}
+ListNode2.prototype.toString = function (){
+    let nodeNums = [],cur = this.head.next;
+    while(cur !== null){
+        nodeNums.push(cur.val);
+        cur = cur.next;
+    }
+    return [nodeNums.join('->'),"node's value"];
+}
+// console.log(ListNode2.prototype);
