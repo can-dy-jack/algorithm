@@ -3,11 +3,6 @@
 
 /**
  * 递归 - DFS
- * @param {Node} cur
- * @param {Node} target
- * @param {Set<Node>} visited
- * @return {boolean}
- * @constructor
  * 当我们递归地实现 DFS 时，似乎不需要使用任何栈。但实际上，我们使用的是由系统提供的隐式栈，也称为调用栈
  */
 // function DFS1(cur, target,visited) {

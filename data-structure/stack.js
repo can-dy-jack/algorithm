@@ -1,10 +1,6 @@
 // 栈 Stack - 底层：数组
 // 后入先出 - LIFO (last-in-first-out)
-//
-/**
- * class Stack
- */
-class Stack1{
+class Stack{
     constructor() {
         this.data = [];
         this.top = 0;
@@ -26,15 +22,8 @@ class Stack1{
         return this.top === 0;
     }
 }
-// console.log(new Stack().top)
-// var s = new Stack();
-// s.push('David');
-// s.push('Ray');
-// s.push('Bryan');
-// console.log(s.length());
-// console.log(s.peek())
 
-class Stack2{
+class StackNum{
     constructor() {
         this.data = [];
     };
@@ -50,8 +39,10 @@ class Stack2{
     length(){
         return this.data.length;
     };
+    isEmpty(){
+        return this.data.length === 0;
+    }
 }
-
 /**
- * 进制转换、回文、DFS算法、模拟递归；
+ * 栈用于解决进制转换、回文、DFS算法、模拟递归等问题；
  */

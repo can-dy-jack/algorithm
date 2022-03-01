@@ -7,13 +7,25 @@
 - [x] 单向链表 `ListNode/ListNode.js`
 - [x] 双向链表 `ListNode/ListNode2.js`
 - [x] 队列 `queue.js`
+- [x] 栈 `stack.js`
 
 ## 算法
 
 `/algorithms`
 
-- [x] 
+- [x] 数学 `math.js`
 
+### 正在肝
+
+- [ ] DFS
+- [ ] BFS
+- [ ] MyPromise
+
+## 文章
+`/articles`
+
+### 未完成文章
+- [ ] KMP算法
 
 ## 待解决
 

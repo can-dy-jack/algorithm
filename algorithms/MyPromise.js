@@ -1,10 +1,19 @@
 // 实现自定义的promise
-/**
- * @param {function} handle
- * @constructor
- */
 function MyPromise(handle){
-    this.state = "pending";
+
 }
 
-
+// new MyPromise(function (resolve,reject){
+//     setTimeout(function (){
+//         resolve("1s passed");
+//     },1000);
+// }).then(function (data){
+//     console.log(data);
+//     return new MyPromise(function (resolve,reject){
+//         setTimeout(function (){
+//             resolve("10s passed");
+//         },1000);
+//     })
+// }).then(function (data){
+//     console.log(data);
+// })

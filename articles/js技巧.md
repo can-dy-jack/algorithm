@@ -110,19 +110,17 @@ console.error(infoA,infoB,infoC)
 
 1. `...`可以平铺数组  
 比如 `Math.min(nums)` 直接放入数组会出错，改为 `Math.min(...nums)` 即可。
-
-2. 类型转换类  
+2. `.flat()` 也可以平铺数组
+3. 类型转换类  
 - 任何类型转化为bool： `!!2`
 - 数字转字符串： `2 + ''`
 - 字符串转数字(前提是能转化为数字)：`+'2'`
-
-3. 进制转化
+4. 进制转化
 - 10进制转化为16进制：`(255).toString(16)`
 - 10进制转化为8进制：`(255).toString(8)`
 - 16进制转化为10进制：`parseInt('FF',16)`
 - 8进制转化为10进制：`parseInt('367',8)`
-
-4. break之后可以加参数 - break 被标记的块语句  
+5. break之后可以加参数 - break 被标记的块语句  
 [MDN-break](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/break)
 
 ## 参考文档
