@@ -131,4 +131,18 @@ ListNode.prototype.toString = function (){
     }
     return [nodeNums.join('->'),"node's value"];
 }
+/**
+ * 反转链表
+ */
+ListNode.prototype.reverse = function (){
+    let cur = this.head.next,reversedNode = null;
+    while(cur){
+        const temp = cur.next;
+        cur.next = reversedNode;
+        reversedNode = cur;
+        cur = temp;
+    }
+    this.head.next = reversedNode;
+}
+
 // console.log(ListNode.prototype);
