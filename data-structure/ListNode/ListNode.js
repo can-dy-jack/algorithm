@@ -144,5 +144,4 @@ ListNode.prototype.reverse = function (){
     }
     this.head.next = reversedNode;
 }
-
 // console.log(ListNode.prototype);

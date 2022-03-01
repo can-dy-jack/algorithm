@@ -2,10 +2,18 @@
 
 ## 数据结构
 
-`/data-structure/src`
+`/data-structure`
 
-- [x] 单向链表 `./ListNode/ListNode.js`
-- [x] 双向链表 `./ListNode/ListNode2.js`
+- [x] 单向链表 `ListNode/ListNode.js`
+- [x] 双向链表 `ListNode/ListNode2.js`
+- [x] 队列 `queue.js`
+
+## 算法
+
+`/algorithms`
+
+- [x] 
+
 
 ## 待解决
 
