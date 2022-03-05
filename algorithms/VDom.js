@@ -1,7 +1,7 @@
 /**
  * 渲染虚拟dom
  */
-// 虚拟DOM
+// virtual DOM
 const vdom = {
     tag: "div",
     events: {
