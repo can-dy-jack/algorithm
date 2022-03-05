@@ -183,16 +183,8 @@ Markdown is supported, Text can be **bold**, _italic_, or ~~strikethrough~~. [Li
 This is note2
 ```
 
-```note
-This is note3
-```
-
 ```tip
 It’s bigger than a bread box.
-```
-
-```tip
-It’s tip 2
 ```
 
 ```warning
