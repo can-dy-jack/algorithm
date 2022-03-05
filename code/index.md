@@ -1,7 +1,5 @@
 ---
 title: 关于我
-date: 2021-12-07 15:18:38
-author: 陈科衡
 ---
 
 - student
@@ -31,19 +29,3 @@ author: 陈科衡
 |⚡ Fun fact: ...|
 |👍Dynamically generated stats for [github readmes：](https://github.com/anuraghazra/github-readme-stats)|
 
-
-{% codeblock Welcome to use hexo-theme-delicate https://github.com/can-dy-jack/delicate can-dy-jack/delicate %}
-________________________________________________
-|                                              |
-|        |        |                            |
-|        |        |                            |
-|    ____|  ____  |     *  ____  _____   ____  |
-|   /    | /    | |     | /     /    |  /    | |
-|   |    | |----| |     | |     |    |  |----| |
-|   \____| \_____ \____ | \____ \____|_ \_____ |
-|                                              |
-|          感谢使用 delicate 主题!              |
-|     Thanks for using delicate theme!         |
-|                                              |
-\______________________________________________/
-{% endcodeblock %}

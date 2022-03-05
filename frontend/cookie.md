@@ -1,20 +1,15 @@
 ---
 title: cookie
-date: 2021-12-16 20:16:16
-tags:
-- cookie
-- front-end
-categories: 网络
 ---
 ## cookie是什么
-{% description dark 百度百科 %}
+
 cookie是一个保存在客户机中的简单的文本文件, 这个文件与特定的 Web 文档关联在一起, 保存了该客户机访问这个Web 文档时的信息, 当客户机再次访问这个 Web 文档时这些信息可供该文档使用。
 由于“Cookie”具有可以保存在客户机上的神奇特性, 因此它可以帮助我们实现记录用户个人信息的功能, 而这一切都不必使用复杂的CGI等程序
-{% enddescription %}
 
 HTTP协议本身是无状态的，即服务器无法判断用户身份。Cookie实际上是一小段的文本信息（key-value格式）。
 一个 Web 站点可能会为每一个访问者产生一个唯一的ID, 然后以 Cookie 文件的形式保存在每个用户的机器上。
 <!--more-->
+
 ### 组成
 
 Cookie是一段不超过4KB的小型文本数据，由一个名称（Name）、一个值（Value）和其它几个用于控制Cookie有效期、安全性、使用范围的可选属性组成。
