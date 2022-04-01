@@ -13,7 +13,38 @@ const gcd = function (a,b){
  * @return {number}
  */
 const lcm = function (a,b){
+
     // 最小公倍数 = 两数之积 ÷ 最大公约数
     return (a*b)/gcd(a,b);
 }
 
+// math
+/**
+ * swap two items
+ * @param first
+ * @param second
+ */
+const swap1 = (first,second)=>{
+    const t = first;
+    first = second;
+    second = t;
+}
+const swap2 = (first,second)=>{
+    // 先加后减 - 适用于数字 - 可能导致数字越界
+    first += second;
+    second = first - second;
+    first = first - second;
+}
+const swap3 = (first,second)=>{
+    // 先减后加 - 适用于数字 - 可能导致数字越界
+    first -= second;
+    second = first + second;
+    first = second - first;
+}
+const swap4 = (first,second)=>{
+    // 位运算完成数字交换  a^a = 0,a^b = b^a
+    first = first^second;
+    second = first^second;
+    first = second^first;
+    console.log(first,second);
+}

@@ -1,7 +1,7 @@
 # KMP算法
 
-
 ## 参考文章
+
 KMP算法不好懂，建议多看几篇文章，总结学习。
 
 - [阮一峰的博客](http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html)
