@@ -123,6 +123,60 @@ console.error(infoA,infoB,infoC)
 5. break之后可以加参数 - break 被标记的块语句  
 [MDN-break](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/break)
 
+## 属性
+### Object.prototype.hasOwnProperty()
+`hasOwnProperty()` 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性
+`obj.hasOwnProperty(prop)`
+`prop` 是 要检测的属性 字符串 名称或者 Symbol。
+
+所有继承了 Object 的对象都会继承到 hasOwnProperty 方法。这个方法可以用来检测一个对象是否含有特定的自身属性；
+**和 in 运算符不同，该方法会忽略掉那些从原型链上继承到的属性。**
+
+参考：[mdn - hasOwnProperty](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty)
+
+可用于 _忽略掉继承属性_
+```js
+for (var name in buz) {
+    if (buz.hasOwnProperty(name)) {
+        console.log(name + buz[name]);
+    }
+    else {
+        console.log(name); // toString or something else
+    }
+}
+```
+JavaScript 并没有保护` hasOwnProperty` 这个属性名.
+因此，当某个对象可能自有一个占用该属性名的属性时，就需要使用外部的 hasOwnProperty 获得正确的结果：
+```javascript
+var foo = {
+  hasOwnProperty: function() {
+    return false;
+  },
+  bar: 'Here be dragons'
+};
+
+foo.hasOwnProperty('bar'); // 始终返回 false
+
+// 如果担心这种情况，
+// 可以直接使用原型链上真正的 hasOwnProperty 方法
+({}).hasOwnProperty.call(foo, 'bar'); // true
+
+// 也可以使用 Object 原型上的 hasOwnProperty 属性
+Object.prototype.hasOwnProperty.call(foo, 'bar'); // true
+```
+
+### 其它
+
+基本数据类型： number string boolean undefined null object Symbol
+object包括： Set array regexp Map WeakMap WeakSet {}
+其中，特别的：
+- `console.log(typeof null)` 输出 `object`
+- `console.log(typeof function (){});` 输出 `function`
+
+
+WeakMap对Key有限制，它必须是Object（Symbol也不行）
+
+
 ## 参考文档
 
 - [MDN-Console/error](https://developer.mozilla.org/zh-CN/docs/Web/API/Console/error)

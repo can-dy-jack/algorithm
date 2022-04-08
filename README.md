@@ -14,6 +14,7 @@
 `/algorithms`
 
 - [x] 数学 `math.js`
+- [x] js深拷贝 `deepClone.js`
 
 ### 正在肝
 
