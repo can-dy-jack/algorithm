@@ -70,3 +70,8 @@ console.log(deep);
 console.log(obj);
 console.log(obj === deep); //false
 
+
+
+let a =  [1,2,3,4,5,6,[7,8,9,12]]
+let b = a;
+b[1] =5
