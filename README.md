@@ -2,6 +2,10 @@
 
 ## 数据结构
 
+- 单向链表：[LinkedList](https://github.com/can-dy-jack/linkedlist)
+
+
+
 `/data-structure`
 
 - [x] 单向链表 `ListNode/ListNode.js`
@@ -41,3 +45,6 @@
 * 双循环链表
   */
 ```
+
+<!-- 数据结构仓库: heap\queue\stack -->
+<!-- 算法仓库：二分查找 -> 不做成代码库，写成文档库也行 -->
