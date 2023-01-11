@@ -1,3 +1,9 @@
+## 数据结构
+
+- 单向链表：[`LinkedList`](https://github.com/can-dy-jack/linkedlist)
+- 双向链表：[`LinkedList`](https://github.com/can-dy-jack/linkedlist)
+
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/can-dy-jack/algorithm/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
