@@ -3,13 +3,9 @@
 ## 数据结构
 
 - 单向链表：[LinkedList](https://github.com/can-dy-jack/linkedlist)
+- 双向链表：[LinkedList](https://github.com/can-dy-jack/linkedlist)
 
 
-
-`/data-structure`
-
-- [x] 单向链表 `ListNode/ListNode.js`
-- [x] 双向链表 `ListNode/ListNode2.js`
 - [x] 队列 `queue.js`
 - [x] 栈 `stack.js`
 
@@ -19,12 +15,6 @@
 
 - [x] 数学 `math.js`
 - [x] js深拷贝 `deepClone.js`
-
-### 正在肝
-
-- [ ] DFS
-- [ ] BFS
-- [ ] MyPromise
 
 ## 文章
 `/articles`
